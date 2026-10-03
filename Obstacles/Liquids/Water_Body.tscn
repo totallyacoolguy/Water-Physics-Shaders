@@ -25,13 +25,13 @@ shader_parameter/effect_radius = 0.15
 shader_parameter/velocity_drag_strength = 0.001
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_oxcsj")
 
-[sub_resource type="Curve2D" id="Curve2D_at76w"]
+[sub_resource type="Curve2D" id="Curve2D_l4ffw"]
 _data = {
 "points": PackedVector2Array(3, 0, -3, 0, 0, 0, -3, 0, 3, 0, 5, 0, -3, 0, 3, 0, 10, 0, -3, 0, 3, 0, 15, 0, -3, 0, 3, 0, 20, 0, -3, 0, 3, 0, 25, 0, -3, 0, 3, 0, 30, 0, -3, 0, 3, 0, 35, 0, -3, 0, 3, 0, 40, 0, -3, 0, 3, 0, 45, 0, -3, 0, 3, 0, 50, 0, -3, 0, 3, 0, 55, 0, -3, 0, 3, 0, 60, 0, -3, 0, 3, 0, 65, 0, -3, 0, 3, 0, 70, 0, -3, 0, 3, 0, 75, 0, -3, 0, 3, 0, 80, 0, -3, 0, 3, 0, 85, 0, -3, 0, 3, 0, 90, 0, 3, 0, -3, 0, 95, 0)
 }
 point_count = 20
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nfis"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b8tg"]
 size = Vector2(95, 1000)
 
 [node name="WaterBody" type="Node2D"]
@@ -49,7 +49,7 @@ material = SubResource("ShaderMaterial_gog85")
 polygon = PackedVector2Array(0, 0, 5, 0, 10, 0, 15, 0, 20, 0, 25, 0, 30, 0, 35, 0, 40, 0, 45, 0, 50, 0, 55, 0, 60, 0, 65, 0, 70, 0, 75, 0, 80, 0, 85, 0, 90, 0, 95, 0, 95, 1000, 0, 1000)
 
 [node name="WaterBorder" type="Path2D" parent="."]
-curve = SubResource("Curve2D_at76w")
+curve = SubResource("Curve2D_l4ffw")
 script = ExtResource("3_hy2xv")
 spline_length = 3.0
 width = 0.5
@@ -61,4 +61,4 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="WaterBodyCollision" type="CollisionShape2D" parent="WaterBodyArea"]
-shape = SubResource("RectangleShape2D_6nfis")
+shape = SubResource("RectangleShape2D_6b8tg")

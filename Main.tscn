@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0b32nbr675gv"]
+[gd_scene load_steps=6 format=3 uid="uid://0b32nbr675gv"]
 
 [ext_resource type="PackedScene" uid="uid://d2l1oof6loxxe" path="res://Player/Player.tscn" id="1_nf1wn"]
 [ext_resource type="Script" path="res://Player/PlayerCharacterData.gd" id="2_ujxu4"]
 [ext_resource type="PackedScene" uid="uid://sudrcpfk7pku" path="res://Background/World.tscn" id="3_3yh8u"]
+[ext_resource type="PackedScene" uid="uid://6d1vxh2vud4c" path="res://Obstacles/Liquids/Water_Body.tscn" id="4_mfq0p"]
 
 [sub_resource type="Resource" id="Resource_qpu6v"]
 resource_local_to_scene = true
@@ -34,7 +35,13 @@ slide_stop_num = 150
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_nf1wn")]
-position = Vector2(92, 120)
+position = Vector2(65, 63)
 character_data = SubResource("Resource_qpu6v")
 
 [node name="World" parent="." instance=ExtResource("3_3yh8u")]
+
+[node name="WaterBody" parent="." instance=ExtResource("4_mfq0p")]
+position = Vector2(96, 96)
+distance_between_springs = 8.0
+spring_number = 41
+depth = 80.0

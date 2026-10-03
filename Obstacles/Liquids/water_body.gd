@@ -20,7 +20,11 @@ extends Node2D
 		spring_number = value
 		if (Engine.is_editor_hint()):
 			setup_water_body()
-@export var depth: float = 1000
+@export var depth: float = 1000:
+	set(value):
+		depth = value
+		if (Engine.is_editor_hint()):
+			setup_water_body()
 @export var water_spring: PackedScene
 @export var death_particles: PackedScene
 
@@ -116,6 +120,7 @@ func setup_water_body() -> void:
 	if (water_body_collision == null): water_body_collision = get_node_or_null("WaterBodyArea/WaterBodyCollision")
 	if (not water_border or not water_body_area or not water_body_collision): return
 	
+	bottom = depth
 	for s in springs:
 		if (is_instance_valid(s)):
 			s.queue_free()
