@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://olx7luprd1ms"]
+
+[ext_resource type="Script" path="res://Obstacles/Liquids/log.gd" id="1_688so"]
+[ext_resource type="Texture2D" uid="uid://dvqvl86nph13t" path="res://addons/CodeEditorBackground/Background/crazy man.jpg" id="2_guj7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwgik"]
+size = Vector2(88, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npg40"]
+size = Vector2(89, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa8o2"]
+size = Vector2(89, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnjho"]
+size = Vector2(89, 16)
+
+[node name="Log" type="RigidBody2D"]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource("1_688so")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fwgik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.09944e-06, 5.06639e-07)
+scale = Vector2(0.0703125, 0.0194444)
+texture = ExtResource("2_guj7l")
+
+[node name="Detection" type="Node2D" parent="."]
+
+[node name="LiquidDetection" type="Area2D" parent="Detection"]
+visible = false
+collision_layer = 0
+collision_mask = 32
+
+[node name="LiquidDetectionHB" type="CollisionShape2D" parent="Detection/LiquidDetection"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_npg40")
+
+[node name="AirDetection" type="Area2D" parent="Detection"]
+visible = false
+collision_layer = 0
+collision_mask = 34
+
+[node name="AirDetectionHB" type="CollisionShape2D" parent="Detection/AirDetection"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_fa8o2")
+
+[node name="PlayerDetection" type="Area2D" parent="Detection"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PlayerDetectionHB" type="CollisionShape2D" parent="Detection/PlayerDetection"]
+visible = false
+shape = SubResource("RectangleShape2D_vnjho")

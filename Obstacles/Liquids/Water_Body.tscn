@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://6d1vxh2vud4c"]
+
+[ext_resource type="Script" path="res://Obstacles/Liquids/water_body.gd" id="1_b28hq"]
+[ext_resource type="PackedScene" uid="uid://dj0yxinjmcqet" path="res://Obstacles/Liquids/Water_Spring.tscn" id="2_6kbyx"]
+[ext_resource type="PackedScene" uid="uid://c661311buqoiy" path="res://ParticleEffects/Death_animation.tscn" id="3_abt7o"]
+[ext_resource type="Script" path="res://Base/smooth_path.gd" id="3_hy2xv"]
+[ext_resource type="Shader" path="res://Shaders/Water/water_shader.gdshader" id="4_ktx8a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_snetu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oxcsj"]
+seamless = true
+noise = SubResource("FastNoiseLite_snetu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gog85"]
+shader = ExtResource("4_ktx8a")
+shader_parameter/wave_speed = Vector2(0.01, 0.01)
+shader_parameter/wave_strength = 0.005
+shader_parameter/noise_scale = Vector2(0.3, 0.3)
+shader_parameter/blur_scale = 1.0
+shader_parameter/tint = Color(1, 0.069147, 0.999492, 0.278431)
+shader_parameter/player_screen_pos = null
+shader_parameter/lagged_velocity = null
+shader_parameter/effect_radius = 0.15
+shader_parameter/velocity_drag_strength = 0.001
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_oxcsj")
+
+[sub_resource type="Curve2D" id="Curve2D_at76w"]
+_data = {
+"points": PackedVector2Array(3, 0, -3, 0, 0, 0, -3, 0, 3, 0, 5, 0, -3, 0, 3, 0, 10, 0, -3, 0, 3, 0, 15, 0, -3, 0, 3, 0, 20, 0, -3, 0, 3, 0, 25, 0, -3, 0, 3, 0, 30, 0, -3, 0, 3, 0, 35, 0, -3, 0, 3, 0, 40, 0, -3, 0, 3, 0, 45, 0, -3, 0, 3, 0, 50, 0, -3, 0, 3, 0, 55, 0, -3, 0, 3, 0, 60, 0, -3, 0, 3, 0, 65, 0, -3, 0, 3, 0, 70, 0, -3, 0, 3, 0, 75, 0, -3, 0, 3, 0, 80, 0, -3, 0, 3, 0, 85, 0, -3, 0, 3, 0, 90, 0, 3, 0, -3, 0, 95, 0)
+}
+point_count = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nfis"]
+size = Vector2(95, 1000)
+
+[node name="WaterBody" type="Node2D"]
+script = ExtResource("1_b28hq")
+dampen = 0.07
+spread = 0.008
+water_thickness = 0.5
+distance_between_springs = 5.0
+spring_number = 20
+water_spring = ExtResource("2_6kbyx")
+death_particles = ExtResource("3_abt7o")
+
+[node name="WaterPolygon" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_gog85")
+polygon = PackedVector2Array(0, 0, 5, 0, 10, 0, 15, 0, 20, 0, 25, 0, 30, 0, 35, 0, 40, 0, 45, 0, 50, 0, 55, 0, 60, 0, 65, 0, 70, 0, 75, 0, 80, 0, 85, 0, 90, 0, 95, 0, 95, 1000, 0, 1000)
+
+[node name="WaterBorder" type="Path2D" parent="."]
+curve = SubResource("Curve2D_at76w")
+script = ExtResource("3_hy2xv")
+spline_length = 3.0
+width = 0.5
+
+[node name="WaterBodyArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(47.5, 500)
+collision_layer = 32
+collision_mask = 2
+
+[node name="WaterBodyCollision" type="CollisionShape2D" parent="WaterBodyArea"]
+shape = SubResource("RectangleShape2D_6nfis")

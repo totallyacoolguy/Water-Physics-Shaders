@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b7hqclts2u7ov"]
+
+[ext_resource type="Shader" path="res://Shaders/Water/water_shader.gdshader" id="1_ng5i4"]
+
+[resource]
+shader = ExtResource("1_ng5i4")
+shader_parameter/wave_speed = Vector2(0.05, 0.1)
+shader_parameter/wave_strength = 0.02
+shader_parameter/noise_scale = Vector2(1, 1)
+shader_parameter/blur_scale = 2.0
+shader_parameter/tint = Color(1, 0, 1, 0.3)
