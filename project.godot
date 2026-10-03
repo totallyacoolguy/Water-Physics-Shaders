@@ -14,6 +14,13 @@ config/name="Water_Physics_Shaders"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CamerashakeManager="*res://Singletons/camerashake_manager.gd"
+GravityManager="*res://Singletons/gravity_manager.gd"
+GuiManager="*res://Singletons/gui_manager.gd"
+HitstunManager="*res://Singletons/hitstun_manager.gd"
+
 [display]
 
 window/size/viewport_width=320
