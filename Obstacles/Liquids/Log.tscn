@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://olx7luprd1ms"]
 
 [ext_resource type="Script" path="res://Obstacles/Liquids/log.gd" id="1_688so"]
-[ext_resource type="Texture2D" uid="uid://dvqvl86nph13t" path="res://addons/CodeEditorBackground/Background/crazy man.jpg" id="2_guj7l"]
+[ext_resource type="Texture2D" uid="uid://ceb4lj01knqm1" path="res://icon.svg" id="2_5dy6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwgik"]
 size = Vector2(88, 13)
@@ -24,9 +24,9 @@ script = ExtResource("1_688so")
 shape = SubResource("RectangleShape2D_fwgik")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.09944e-06, 5.06639e-07)
-scale = Vector2(0.0703125, 0.0194444)
-texture = ExtResource("2_guj7l")
+position = Vector2(0.499997, 0)
+scale = Vector2(0.695312, 0.109375)
+texture = ExtResource("2_5dy6w")
 
 [node name="Detection" type="Node2D" parent="."]
 
