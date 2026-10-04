@@ -1,9 +1,6 @@
-# 📦 My Package
+# Water Physics Shaders
 
-[![GitHub license](https://shields.io)](https://github.com)
-
-> *Your documentation is a direct reflection of your software, so hold it to the same standards.*
-
+[![License: MIT](https://shields.io)](https://choosealicense.com/licenses/mit/)
 
 ## 🌟 Highlights
 
