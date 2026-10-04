@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	handle_acceleration_x(input_axis_x,delta) 
 	handle_acceleration_y(input_axis_y,delta)
 	handle_friction_x(input_axis_x,delta)
+	handle_animation(input_axis_x)
 	handle_water_timer()
 	
 	if (Input.is_action_just_pressed("dash") and Input.is_action_pressed("move_down") and dash_timer.time_left == 0): 
@@ -45,9 +46,6 @@ func _physics_process(delta: float) -> void:
 		jump.emit()
 	elif (not liquid_detection.has_overlapping_areas()):
 		default.emit()
-
-func _process(_delta: float) -> void:
-	animator.play("walk")
 
 func handle_acceleration_x(input_axis: float, delta: float) -> void:
 	if (input_axis != 0):
@@ -64,3 +62,9 @@ func handle_friction_x(input_axis: float, delta: float) -> void:
 func handle_water_timer() -> void:
 	if (Input.is_action_just_released("move_up")):
 		water_jump_timer.start()
+
+func handle_animation(input_axis: float) -> void:
+	if (actor.is_on_floor() and input_axis == 0):
+		animation.play("idle")
+	else:
+		animation.play("walk", -1, 2)

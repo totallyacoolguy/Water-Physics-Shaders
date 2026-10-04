@@ -59,6 +59,7 @@ func Default_Signals() -> void:
 	player_default.jump.connect(fsm.change_state.bind(player_jump))
 	player_default.slide.connect(fsm.change_state.bind(player_slide))
 	player_default.walk.connect(fsm.change_state.bind(player_movement))
+	player_default.water.connect(fsm.change_state.bind(player_water_movement))
 
 func Dash_Signals() -> void:
 	player_dash.dashed_stop.connect(fsm.change_state.bind(player_movement))

@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=23 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_62trq"]
 [ext_resource type="Texture2D" uid="uid://cwkal2f5yptyh" path="res://Player/Sprites/idle.png" id="3_lnawk"]
 [ext_resource type="Resource" uid="uid://dvyc820lqfjrx" path="res://Player/Sprites/DefaultPlayerCharacter.tres" id="3_vcj7w"]
-[ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/Sprites/attack_sheet.png" id="6_1m13p"]
 [ext_resource type="Script" path="res://Player/States/player_movement.gd" id="8_ip4se"]
 [ext_resource type="Script" path="res://Player/States/player_default.gd" id="8_u63yy"]
 [ext_resource type="Script" path="res://Player/States/player_dash.gd" id="9_s3h73"]
@@ -15,26 +14,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kltw"]
 atlas = ExtResource("3_lnawk")
 region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jmcr"]
-atlas = ExtResource("6_1m13p")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jdja"]
-atlas = ExtResource("6_1m13p")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gpo4"]
-atlas = ExtResource("6_1m13p")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sj85q"]
-atlas = ExtResource("6_1m13p")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dd88k"]
-atlas = ExtResource("6_1m13p")
-region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpohf"]
 atlas = ExtResource("3_lnawk")
@@ -52,26 +31,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jmcr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4jdja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gpo4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sj85q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dd88k")
-}],
-"loop": true,
-"name": &"sword_swing",
 "speed": 5.0
 }, {
 "frames": [{
@@ -204,7 +163,7 @@ character_data = ExtResource("3_vcj7w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yvmua")
-animation = &"idle"
+animation = &"walk"
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.4)
@@ -289,13 +248,14 @@ one_shot = true
 script = ExtResource("1_6ddrn")
 state = NodePath("PlayerDefault")
 
-[node name="PlayerDefault" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animation", "animator", "dash_timer", "jump_timer")]
+[node name="PlayerDefault" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animation", "animator", "dash_timer", "jump_timer", "liquid_detection")]
 script = ExtResource("8_u63yy")
 actor = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
 animator = NodePath("../../AnimatedSprite2D")
 dash_timer = NodePath("../../Timers/DashTimer")
 jump_timer = NodePath("../../Timers/JumpTimer")
+liquid_detection = NodePath("../../Detection/LiquidDetection")
 
 [node name="PlayerDash" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "dash_timer", "crash_timer")]
 script = ExtResource("9_s3h73")

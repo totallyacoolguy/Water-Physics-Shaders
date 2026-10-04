@@ -5,12 +5,14 @@ signal dashed
 signal jump
 signal slide
 signal walk
+signal water
 
 @export var actor: Player
 @export var animation: AnimationPlayer
 @export var animator: AnimatedSprite2D
 @export var dash_timer: Timer
 @export var jump_timer: Timer
+@export var liquid_detection: Area2D
 
 func _enter_state() -> void:
 	set_physics_process(true)
@@ -35,6 +37,8 @@ func _physics_process(delta: float) -> void:
 		dashed.emit()
 	elif (Input.is_action_just_pressed("move_up") or jump_timer.time_left > 0): 
 		jump.emit()
+	elif (liquid_detection.has_overlapping_areas()):
+		water.emit()
 
 func handle_air_resistance(input_axis: float, delta: float) -> void:
 	if (actor.is_on_floor()): return
