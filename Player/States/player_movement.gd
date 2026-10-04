@@ -5,6 +5,7 @@ signal dashed
 signal default
 signal jump
 signal slide
+signal water
 
 @export var actor: Player
 @export var animator: AnimatedSprite2D
@@ -39,6 +40,8 @@ func _physics_process(delta: float) -> void:
 		default.emit()
 	elif (Input.is_action_just_pressed("move_up") or jump_timer.time_left > 0): 
 		jump.emit()
+	elif (liquid_detection.has_overlapping_areas()): 
+		water.emit()
 
 func _process(_delta: float) -> void:
 	animator.play("walk")

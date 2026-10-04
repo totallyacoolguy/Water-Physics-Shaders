@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=32 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_62trq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/States/player_movement.gd" id="8_ip4se"]
 [ext_resource type="Script" path="res://Player/States/player_default.gd" id="8_u63yy"]
 [ext_resource type="Script" path="res://Player/States/player_dash.gd" id="9_s3h73"]
+[ext_resource type="Script" path="res://Player/States/player_water_movement.gd" id="12_ce4hy"]
 [ext_resource type="Script" path="res://Player/States/player_jump.gd" id="13_y4bgm"]
 [ext_resource type="Script" path="res://Player/States/player_slide.gd" id="14_axm0f"]
 
@@ -402,3 +403,13 @@ animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
 dash_timer = NodePath("../../Timers/DashTimer")
 crash_timer = NodePath("../../Timers/CrashTimer")
+
+[node name="PlayerWaterMovement" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "coyote_timer", "dash_timer", "water_jump_timer", "liquid_detection")]
+script = ExtResource("12_ce4hy")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+animation = NodePath("../../AnimationPlayer")
+coyote_timer = NodePath("../../Timers/CoyoteJumpTimer")
+dash_timer = NodePath("../../Timers/DashTimer")
+water_jump_timer = NodePath("../../Timers/WallJumpTimer")
+liquid_detection = NodePath("../../Detection/LiquidDetection")

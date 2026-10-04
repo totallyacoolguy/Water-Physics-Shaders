@@ -41,7 +41,7 @@ character_data = SubResource("Resource_qpu6v")
 [node name="World" parent="." instance=ExtResource("3_3yh8u")]
 
 [node name="WaterBody" parent="." instance=ExtResource("4_mfq0p")]
-position = Vector2(96, 96)
+position = Vector2(96, 106)
 distance_between_springs = 8.0
 spring_number = 41
-depth = 80.0
+depth = 70.0

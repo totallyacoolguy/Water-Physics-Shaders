@@ -27,6 +27,7 @@ extends CharacterBody2D
 @onready var player_movement: PlayerMovement = $FiniteStateMachine/PlayerMovement
 @onready var player_jump: PlayerJump = $FiniteStateMachine/PlayerJump
 @onready var player_slide: PlayerSlide = $FiniteStateMachine/PlayerSlide
+@onready var player_water_movement: PlayerWaterMovement = $FiniteStateMachine/PlayerWaterMovement
 
 @onready var coyote_jump_timer: Timer = $Timers/CoyoteJumpTimer
 @onready var crash_timer: Timer = $Timers/CrashTimer
@@ -57,6 +58,7 @@ func _ready() -> void:
 	Jump_Signals()
 	Movement_Signals()
 	Slide_Signals()
+	Water_Movement_Signals()
 
 func Default_Signals() -> void:
 	player_default.dashed.connect(fsm.change_state.bind(player_dash))
@@ -71,17 +73,24 @@ func Dash_Signals() -> void:
 func Jump_Signals() -> void:
 	player_jump.dashed.connect(fsm.change_state.bind(player_dash))
 	player_jump.grounded.connect(fsm.change_state.bind(player_default))
+	player_jump.water.connect(fsm.change_state.bind(player_water_movement))
 
 func Movement_Signals() -> void:
 	player_movement.dashed.connect(fsm.change_state.bind(player_dash))
 	player_movement.default.connect(fsm.change_state.bind(player_default))
 	player_movement.jump.connect(fsm.change_state.bind(player_jump))
 	player_movement.slide.connect(fsm.change_state.bind(player_slide))
+	player_movement.water.connect(fsm.change_state.bind(player_water_movement))
 
 func Slide_Signals() -> void:
 	player_slide.jump.connect(fsm.change_state.bind(player_jump))
 	player_slide.slide_stop.connect(fsm.change_state.bind(player_movement))
 
+func Water_Movement_Signals() -> void:
+	player_water_movement.dashed.connect(fsm.change_state.bind(player_dash))
+	player_water_movement.default.connect(fsm.change_state.bind(player_default))
+	player_water_movement.jump.connect(fsm.change_state.bind(player_jump))
+	player_water_movement.slide.connect(fsm.change_state.bind(player_slide))
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)

@@ -31,7 +31,7 @@ _data = {
 }
 point_count = 20
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b8tg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgqek"]
 size = Vector2(95, 1000)
 
 [node name="WaterBody" type="Node2D"]
@@ -61,4 +61,4 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="WaterBodyCollision" type="CollisionShape2D" parent="WaterBodyArea"]
-shape = SubResource("RectangleShape2D_6b8tg")
+shape = SubResource("RectangleShape2D_mgqek")

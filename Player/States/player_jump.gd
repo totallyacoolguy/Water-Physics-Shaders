@@ -3,6 +3,7 @@ extends State
 
 signal dashed
 signal grounded
+signal water
 
 @export var actor: Player
 @export var jump_timer: Timer
@@ -26,6 +27,12 @@ func Ground_Switch() -> void:
 	actor.wall_jump_start = true
 	grounded.emit()
 
+func Water_Switch() -> void:
+	actor.able_double_jump = true 
+	actor.wall_jump_start = true
+	actor.able_wall_jump = false
+	water.emit()
+
 func _ready() -> void:
 	set_physics_process(false)
 
@@ -43,6 +50,8 @@ func _physics_process(delta: float) -> void:
 		dashed.emit()
 	elif (actor.is_on_floor()): 
 		Ground_Switch()
+	elif (liquid_detection.has_overlapping_areas()):
+		Water_Switch()
 
 func double_jump() -> void:
 	if (Input.is_action_just_pressed("move_up")):
