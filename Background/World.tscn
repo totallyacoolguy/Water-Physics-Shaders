@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://sudrcpfk7pku"]
+[gd_scene load_steps=11 format=4 uid="uid://sudrcpfk7pku"]
 
 [ext_resource type="Script" path="res://Background/world.gd" id="1_y8ig0"]
-[ext_resource type="Texture2D" uid="uid://npom2hmprwac" path="res://Background/field_tilemap.png" id="4_1yanp"]
 [ext_resource type="Texture2D" uid="uid://dd4ja47eejqk2" path="res://Background/basic_block.png" id="4_4iukj"]
 [ext_resource type="Texture2D" uid="uid://cidgla3oqkmoa" path="res://Background/MountainsLayers/sky.png" id="5_2psu6"]
 [ext_resource type="Texture2D" uid="uid://bcnsdxg457gf4" path="res://Background/MountainsLayers/far-mountains.png" id="6_7dna0"]
@@ -22,16 +21,10 @@ texture = ExtResource("4_4iukj")
 1:2/0 = 0
 2:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4tmkh"]
-texture = ExtResource("4_1yanp")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 1.875, 0.25, -1.125, 4.5, 1.25, 4.75, 5.25, -5, 6.625)
-
 [sub_resource type="TileSet" id="TileSet_r18c7"]
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_5jt2f")
-sources/2 = SubResource("TileSetAtlasSource_4tmkh")
 
 [node name="World" type="StaticBody2D" groups=["World"]]
 collision_mask = 0
