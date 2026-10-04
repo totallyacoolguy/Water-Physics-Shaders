@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=29 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_62trq"]
 [ext_resource type="Texture2D" uid="uid://cwkal2f5yptyh" path="res://Player/Sprites/idle.png" id="3_lnawk"]
-[ext_resource type="PackedScene" uid="uid://c661311buqoiy" path="res://ParticleEffects/Death_animation.tscn" id="3_q2ecl"]
 [ext_resource type="Resource" uid="uid://dvyc820lqfjrx" path="res://Player/Sprites/DefaultPlayerCharacter.tres" id="3_vcj7w"]
 [ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/Sprites/attack_sheet.png" id="6_1m13p"]
 [ext_resource type="Script" path="res://Player/States/player_movement.gd" id="8_ip4se"]
@@ -202,7 +201,6 @@ platform_floor_layers = 4294967291
 safe_margin = 0.2
 script = ExtResource("1_62trq")
 character_data = ExtResource("3_vcj7w")
-death_particles = ExtResource("3_q2ecl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yvmua")

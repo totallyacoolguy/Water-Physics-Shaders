@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 @export var character_data: PlayerCharacterData
-@export var death_particles: PackedScene
 
 @onready var past_direction: bool = $AnimatedSprite2D.flip_h
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

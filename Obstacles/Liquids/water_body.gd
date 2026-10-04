@@ -26,7 +26,7 @@ extends Node2D
 		if (Engine.is_editor_hint()):
 			setup_water_body()
 @export var water_spring: PackedScene
-@export var death_particles: PackedScene
+@export var water_particles: PackedScene
 
 @onready var water_border: SmoothPath = $WaterBorder
 @onready var water_polygon: Polygon2D = $WaterPolygon
@@ -156,7 +156,7 @@ func splash(index: int, speed: float) -> void:
 func touched_water_body(body: Node2D) -> void:
 	if (body.is_in_group("Player")):
 		is_player_inside = not is_player_inside  
-	var clone := death_particles.instantiate()
+	var clone := water_particles.instantiate()
 	get_tree().current_scene.add_child.call_deferred(clone)
 	clone.global_position = body.global_position
 	clone.emitting = true

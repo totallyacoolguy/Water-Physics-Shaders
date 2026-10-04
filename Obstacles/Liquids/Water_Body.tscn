@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Obstacles/Liquids/water_body.gd" id="1_b28hq"]
 [ext_resource type="PackedScene" uid="uid://dj0yxinjmcqet" path="res://Obstacles/Liquids/Water_Spring.tscn" id="2_6kbyx"]
-[ext_resource type="PackedScene" uid="uid://c661311buqoiy" path="res://ParticleEffects/Death_animation.tscn" id="3_abt7o"]
+[ext_resource type="PackedScene" uid="uid://c661311buqoiy" path="res://ParticleEffects/Water_Particles.tscn" id="3_dol6o"]
 [ext_resource type="Script" path="res://Base/smooth_path.gd" id="3_hy2xv"]
 [ext_resource type="Shader" path="res://Shaders/Water/water_shader.gdshader" id="4_ktx8a"]
 
@@ -25,13 +25,13 @@ shader_parameter/effect_radius = 0.15
 shader_parameter/velocity_drag_strength = 0.001
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_oxcsj")
 
-[sub_resource type="Curve2D" id="Curve2D_c4wyw"]
+[sub_resource type="Curve2D" id="Curve2D_r5evm"]
 _data = {
 "points": PackedVector2Array(2, 0, -2, 0, 0, 0, -2, 0, 2, 0, 5, 0, -2, 0, 2, 0, 10, 0, -2, 0, 2, 0, 15, 0, -2, 0, 2, 0, 20, 0, -2, 0, 2, 0, 25, 0, -2, 0, 2, 0, 30, 0, -2, 0, 2, 0, 35, 0, -2, 0, 2, 0, 40, 0, -2, 0, 2, 0, 45, 0, -2, 0, 2, 0, 50, 0, -2, 0, 2, 0, 55, 0, -2, 0, 2, 0, 60, 0, -2, 0, 2, 0, 65, 0, -2, 0, 2, 0, 70, 0, -2, 0, 2, 0, 75, 0, -2, 0, 2, 0, 80, 0, -2, 0, 2, 0, 85, 0, -2, 0, 2, 0, 90, 0, 2, 0, -2, 0, 95, 0)
 }
 point_count = 20
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgqek"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaix6"]
 size = Vector2(95, 1000)
 
 [node name="WaterBody" type="Node2D"]
@@ -42,14 +42,14 @@ water_thickness = 0.5
 distance_between_springs = 5.0
 spring_number = 20
 water_spring = ExtResource("2_6kbyx")
-death_particles = ExtResource("3_abt7o")
+water_particles = ExtResource("3_dol6o")
 
 [node name="WaterPolygon" type="Polygon2D" parent="."]
 material = SubResource("ShaderMaterial_gog85")
 polygon = PackedVector2Array(0, 0, 5, 0, 10, 0, 15, 0, 20, 0, 25, 0, 30, 0, 35, 0, 40, 0, 45, 0, 50, 0, 55, 0, 60, 0, 65, 0, 70, 0, 75, 0, 80, 0, 85, 0, 90, 0, 95, 0, 95, 1000, 0, 1000)
 
 [node name="WaterBorder" type="Path2D" parent="."]
-curve = SubResource("Curve2D_c4wyw")
+curve = SubResource("Curve2D_r5evm")
 script = ExtResource("3_hy2xv")
 spline_length = 2.0
 width = 0.5
@@ -61,4 +61,4 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="WaterBodyCollision" type="CollisionShape2D" parent="WaterBodyArea"]
-shape = SubResource("RectangleShape2D_mgqek")
+shape = SubResource("RectangleShape2D_gaix6")
