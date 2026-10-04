@@ -355,19 +355,17 @@ one_shot = true
 script = ExtResource("1_6ddrn")
 state = NodePath("PlayerDefault")
 
-[node name="PlayerDefault" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animation", "animator", "dash_timer", "jump_timer", "liquid_detection")]
+[node name="PlayerDefault" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animation", "animator", "dash_timer", "jump_timer")]
 script = ExtResource("8_u63yy")
 actor = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
 animator = NodePath("../../AnimatedSprite2D")
 dash_timer = NodePath("../../Timers/DashTimer")
 jump_timer = NodePath("../../Timers/JumpTimer")
-liquid_detection = NodePath("../../Detection/LiquidDetection")
 
-[node name="PlayerDash" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "damage_detection", "animator", "animation", "dash_timer", "crash_timer")]
+[node name="PlayerDash" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "dash_timer", "crash_timer")]
 script = ExtResource("9_s3h73")
 actor = NodePath("../..")
-damage_detection = NodePath("../../Detection/HazzardDetection/HazzardDetectionHB")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
 dash_timer = NodePath("../../Timers/DashTimer")
@@ -395,21 +393,19 @@ animator = NodePath("../../AnimatedSprite2D")
 movement_obj_detection = NodePath("../../Detection/MovementObjDetection")
 liquid_detection = NodePath("../../Detection/LiquidDetection")
 
-[node name="PlayerSlide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "damage_detection", "animator", "animation", "dash_timer", "crash_timer")]
+[node name="PlayerSlide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "dash_timer", "crash_timer")]
 script = ExtResource("14_axm0f")
 actor = NodePath("../..")
-damage_detection = NodePath("../../Detection/HazzardDetection/HazzardDetectionHB")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
 dash_timer = NodePath("../../Timers/DashTimer")
 crash_timer = NodePath("../../Timers/CrashTimer")
 
-[node name="PlayerWaterMovement" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "coyote_timer", "dash_timer", "water_jump_timer", "liquid_detection")]
+[node name="PlayerWaterMovement" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation", "dash_timer", "water_jump_timer", "liquid_detection")]
 script = ExtResource("12_ce4hy")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
-coyote_timer = NodePath("../../Timers/CoyoteJumpTimer")
 dash_timer = NodePath("../../Timers/DashTimer")
 water_jump_timer = NodePath("../../Timers/WallJumpTimer")
 liquid_detection = NodePath("../../Detection/LiquidDetection")

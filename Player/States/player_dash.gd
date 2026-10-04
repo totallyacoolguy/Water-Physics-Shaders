@@ -5,7 +5,6 @@ signal dashed_stop
 signal jump
 
 @export var actor: Player
-@export var damage_detection: CollisionShape2D
 @export var animator: AnimatedSprite2D
 @export var animation: AnimationPlayer
 @export var dash_timer: Timer
@@ -19,13 +18,11 @@ func _enter_state() -> void:
 	animator.play("idle")
 	set_physics_process(true)
 	actor.velocity.y = 0.0
-	damage_detection.disabled = true
 	sprite_direction()
 
 func _exit_state() -> void:
 	GravityManager.full_gravity(actor)
 	set_physics_process(false)
-	damage_detection.disabled = false
 	actor.character_data.air_resistance = 1000
 
 func Dash_Switch() -> void:

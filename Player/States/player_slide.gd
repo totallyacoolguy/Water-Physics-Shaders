@@ -7,7 +7,6 @@ signal swinged
 signal jump
 
 @export var actor: Player
-@export var damage_detection: CollisionShape2D
 @export var animator: AnimatedSprite2D
 @export var animation: AnimationPlayer
 @export var dash_timer: Timer
@@ -20,12 +19,10 @@ func _enter_state() -> void:
 	animator.play("idle")
 	set_physics_process(true)
 	actor.velocity.y = 0.0
-	damage_detection.disabled = true
 	sprite_direction()
 
 func _exit_state() -> void:
 	set_physics_process(false)
-	damage_detection.disabled = false
 
 func Slide_Switch() -> void:
 	slide_stop.emit()

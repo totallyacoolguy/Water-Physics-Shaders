@@ -9,7 +9,6 @@ signal slide
 @export var actor: Player
 @export var animator: AnimatedSprite2D
 @export var animation: AnimationPlayer
-@export var coyote_timer: Timer
 @export var dash_timer: Timer
 @export var water_jump_timer: Timer
 @export var liquid_detection: Area2D
