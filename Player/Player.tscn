@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=30 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_62trq"]
@@ -93,18 +93,6 @@ height = 9.0
 
 [sub_resource type="Animation" id="Animation_rlvre"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Detection/SwordSwingDetection/SwordSwingHB:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_dkjjd"]
 resource_name = "idle"
@@ -161,30 +149,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"sword_swing"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Detection/SwordSwingDetection/SwordSwingHB:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(5.5, -5.5), Vector2(7, -5), Vector2(8, -2.5), Vector2(8, 1), Vector2(8, 3)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Detection/SwordSwingDetection/SwordSwingHB:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
 [sub_resource type="Animation" id="Animation_13m0h"]
 resource_name = "walk"
@@ -222,19 +186,12 @@ _data = {
 "walk": SubResource("Animation_13m0h")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qhw2"]
-radius = 3.0
-height = 6.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hw80v"]
 radius = 3.5
 height = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkgh1"]
 size = Vector2(5, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3ltn"]
-size = Vector2(5, 5)
 
 [node name="Player" type="CharacterBody2D" groups=["Bodies", "Player"]]
 process_mode = 1
@@ -276,14 +233,6 @@ editor_draw_drag_margin = true
 
 [node name="Detection" type="Node2D" parent="."]
 
-[node name="HazzardDetection" type="Area2D" parent="Detection"]
-collision_layer = 2
-collision_mask = 8
-
-[node name="HazzardDetectionHB" type="CollisionShape2D" parent="Detection/HazzardDetection"]
-position = Vector2(-0.5, 0)
-shape = SubResource("CapsuleShape2D_1qhw2")
-
 [node name="LiquidDetection" type="Area2D" parent="Detection"]
 collision_layer = 0
 collision_mask = 32
@@ -300,15 +249,6 @@ collision_mask = 16
 position = Vector2(-0.5, 5.5)
 shape = SubResource("RectangleShape2D_pkgh1")
 
-[node name="SwordSwingDetection" type="Area2D" parent="Detection"]
-collision_layer = 4
-collision_mask = 4
-
-[node name="SwordSwingHB" type="CollisionShape2D" parent="Detection/SwordSwingDetection"]
-position = Vector2(5.5, -5.5)
-shape = SubResource("RectangleShape2D_f3ltn")
-disabled = true
-
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteJumpTimer" type="Timer" parent="Timers"]
@@ -321,10 +261,6 @@ one_shot = true
 
 [node name="DashTimer" type="Timer" parent="Timers"]
 wait_time = 0.3
-one_shot = true
-
-[node name="iFrameTimer" type="Timer" parent="Timers"]
-wait_time = 0.4
 one_shot = true
 
 [node name="JumpTimer" type="Timer" parent="Timers"]

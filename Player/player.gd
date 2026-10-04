@@ -12,14 +12,10 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 
 @onready var detection: Node2D = $Detection
-@onready var hazzard_detection: Area2D = $Detection/HazzardDetection
-@onready var hazzard_detectionHB: CollisionShape2D = $Detection/HazzardDetection/HazzardDetectionHB
 @onready var liquid_detection: Area2D = $Detection/LiquidDetection
 @onready var liquid_detectionHB: CollisionShape2D = $Detection/LiquidDetection/LiquidDetectionHB
 @onready var movement_obj_detection: Area2D = $Detection/MovementObjDetection
 @onready var movement_obj_detectionHB: CollisionShape2D = $Detection/MovementObjDetection/MovementObjDetectionHB
-@onready var sword_swing_detection: Area2D = $Detection/SwordSwingDetection
-@onready var sword_swingHB: CollisionShape2D = $Detection/SwordSwingDetection/SwordSwingHB
 
 @onready var fsm: FiniteStateMachine = $FiniteStateMachine
 @onready var player_default: PlayerDefault = $FiniteStateMachine/PlayerDefault
@@ -32,7 +28,6 @@ extends CharacterBody2D
 @onready var coyote_jump_timer: Timer = $Timers/CoyoteJumpTimer
 @onready var crash_timer: Timer = $Timers/CrashTimer
 @onready var dash_timer: Timer = $Timers/DashTimer
-@onready var iframe_timer: Timer = $Timers/iFrameTimer
 @onready var jump_timer: Timer = $Timers/JumpTimer
 @onready var quick_fall_timer: Timer = $Timers/QuickFallTimer
 @onready var slide_timer: Timer = $Timers/SlideTimer
@@ -94,7 +89,6 @@ func Water_Movement_Signals() -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	touching_hazzard()
 	handle_jump_timer()
 	var was_on_floor: bool = is_on_floor()
 	var was_on_wall: bool = is_on_wall_only()
@@ -152,26 +146,3 @@ func quick_fall() -> void:
 		could_quick_fall = true
 	elif (is_on_floor()):
 		could_quick_fall = false
-
-func show_death() -> void:
-	var clone := death_particles.instantiate()
-	get_tree().current_scene.add_child.call_deferred(clone)
-	clone.emitting = true
-	clone.global_position = global_position
-	await clone.finished
-	clone.queue_free()
-
-func take_damage() -> void:
-	if (iframe_timer.time_left <= 0):
-		character_data.HP -= 1
-		iframe_timer.start()
-		show_death()
-
-func touching_hazzard() -> void:
-	if (hazzard_detection.has_overlapping_areas() or hazzard_detection.has_overlapping_bodies()):
-		take_damage()
-		if (character_data.HP <= 0):
-			HitstunManager.slow_motion_short()
-			show_death()
-			call_deferred("set_process_mode", 4) # Disabled
-			animated_sprite.set_visible(false)
