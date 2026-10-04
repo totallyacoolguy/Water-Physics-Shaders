@@ -2,13 +2,6 @@
 
 ![Static Badge](https://img.shields.io/badge/Water%20Physics%20Shaders-MIT-greem)
 
-## 🌟 Highlights
-
-- Some functionality made easy!
-- This problem handled
-- etc.
-
-
 ## ℹ️ Overview
 
 For my shader, it implements motion blur, tinting, and cross-blur to modify objects behind it such as the background and player. Specifically for the motion blur, I needed to learn how to get velocity from a gd file and export it to the shader file for use. 
@@ -21,6 +14,12 @@ The final thing I choose to add was log that floats to the surface, changing its
 ### ✍️ Author
 
 I'm [Colin Thai](https://github.io), I always wanted to work to introduce myself to shaders and water related physics as a whole, so I designed and program this project to explore those topics. This repo is a showcase on what I learnt and neat things I figured out
+
+## 🌟 Highlights
+
+- Some functionality made easy!
+- This problem handled
+- etc.
 
 ## ⬇️ Installation
 
