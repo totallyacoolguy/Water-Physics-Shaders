@@ -1,6 +1,6 @@
 # Water Physics Shaders
 
-[![License: MIT](https://shields.io)](https://choosealicense.com/licenses/mit/)
+![Static Badge](https://img.shields.io/badge/Water%20Physics%20Shaders-MIT-greem)
 
 ## 🌟 Highlights
 
