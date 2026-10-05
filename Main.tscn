@@ -42,7 +42,7 @@ character_data = SubResource("Resource_qpu6v")
 [node name="World" parent="." instance=ExtResource("3_3yh8u")]
 
 [node name="Log" parent="." instance=ExtResource("5_beo7h")]
-position = Vector2(242, 56)
+position = Vector2(166, 20)
 
 [node name="WaterBody" parent="." instance=ExtResource("4_mfq0p")]
 position = Vector2(96, 106)
