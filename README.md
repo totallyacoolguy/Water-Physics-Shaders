@@ -23,6 +23,9 @@ Cross blur, motion blur, tint, water particles
 Log torque physics
 ![](https://github.com/totallyacoolguy/Water-Physics-Shaders/blob/main/GIFS/LOG_SHOWCASE.gif)
 
+In editor shader
+![](https://github.com/totallyacoolguy/Water-Physics-Shaders/blob/main/GIFS/IN_EDITOR_SHADER_SHOWCASE.gif)
+
 ## ⬇️ Installation
 
 Simply have Godot 4.3 installed and clone the repo to see the project in action!
