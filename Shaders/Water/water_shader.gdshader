@@ -25,23 +25,23 @@ void fragment() {
     // ----------------------------------------------------
     // STEP 1: ANIMATED NOISE & LOCALIZED MOMENTUM DISTORTION
     // ----------------------------------------------------
-    
+
     // 1. Calculate a mask centered around the player's screen position
     vec2 to_player = SCREEN_UV - player_screen_pos;
     float dist = length(to_player);
     // Smoothstep creates a soft radius fade that falls off perfectly to 0.0 at the edges
     float local_mask = smoothstep(effect_radius, 0.0, dist);
-    
+
     // 2. Calculate localized distortion vector
     // Multiplying velocity by the local_mask restricts the pulling effect to just around the player
     vec2 velocity_distortion = lagged_velocity * velocity_drag_strength * local_mask * 0.1;
-    
-    // 3. Shift the noise map coordinates LOCALLY. 
-    // Because velocity_distortion goes to zero outside the mask and when stopping, 
+
+    // 3. Shift the noise map coordinates LOCALLY.
+    // Because velocity_distortion goes to zero outside the mask and when stopping,
     // the noise layout remains anchored and perfectly snaps back to its default state.
     vec2 moved_uv = (SCREEN_UV * noise_scale) + (wave_speed * TIME) - velocity_distortion;
     vec2 noise_val = texture(noise_texture, moved_uv).rg * 2.0 - 1.0;
-    
+
     // 4. Combine ambient water noise with local background screen texture pulling
     vec2 distorted_uv = SCREEN_UV + (noise_val * wave_strength) - velocity_distortion;
 
