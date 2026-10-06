@@ -17,8 +17,11 @@ I'm [Colin Thai](https://github.io), I always wanted to work on introducing myse
 
 ## 🌟 Highlights
 
-Showcase of the shader in action
+Cross blur, motion blur, tint, water particles
 ![](https://github.com/totallyacoolguy/Water-Physics-Shaders/blob/main/GIFS/full%20shader%20showcase.gif)
+
+Log torque physics
+![](https://github.com/totallyacoolguy/Water-Physics-Shaders/blob/main/GIFS/LOG_SHOWCASE.gif)
 
 ## ⬇️ Installation
 
