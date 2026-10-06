@@ -49,3 +49,8 @@ position = Vector2(96, 106)
 distance_between_springs = 8.0
 spring_number = 41
 depth = 70.0
+
+[node name="WaterBody2" parent="." instance=ExtResource("4_mfq0p")]
+position = Vector2(-489, 116)
+distance_between_springs = 10.0
+spring_number = 50
