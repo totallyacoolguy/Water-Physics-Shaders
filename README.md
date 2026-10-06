@@ -17,9 +17,7 @@ I'm [Colin Thai](https://github.io), I always wanted to work on introducing myse
 
 ## 🌟 Highlights
 
-- Some functionality made easy!
-- This problem handled
-- etc.
+[Showcase of the shader in action](https://github.com/totallyacoolguy/Water-Physics-Shaders/blob/main/GIFS/full%20shader%20showcase.gif)
 
 ## ⬇️ Installation
 
